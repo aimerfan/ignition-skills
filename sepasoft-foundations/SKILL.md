@@ -4,18 +4,14 @@ description: >-
   Conceptual grounding for the SepaSoft Batch Procedure module on Ignition
   (MES, ISA-88 batch): ISA-88 four-layer model, system.mes.* API surface, EBR
   data model, batch lifecycle/state machine, and SepaSoft parameter path
-  syntax. This is a foundation skill — load it whenever a task or question
-  touches batch recipes, master/control recipes, phases, operations, unit
-  procedures, batch state or commands (idle/running/holding/aborting...),
-  EBR or batch history, parameter paths or the {} placeholder syntax,
-  system.mes scripting, ISA-88 hierarchy, or any SepaSoft/MES batch behavior.
-  If the topic is plausibly SepaSoft batch, load this rather than answering
-  from memory — the cost of loading is low and guessing structure or an API
-  here is high-risk. Read this SKILL.md first; it is an index, not the answer
-  — for any concrete signature, option list, or version-specific behavior,
-  open the relevant references/ file and verify against docs.sepasoft.com
-  before answering. Based on current stable release with known forward
-  changes flagged inline.
+  syntax. This is a foundation skill — load it whenever a task plausibly
+  touches SepaSoft/MES batch: recipes, phases, batch state, EBR, parameter
+  paths, system.mes scripting, or ISA-88 hierarchy. Loading is cheap and
+  guessing structure or an API here is high-risk, so load it eagerly. Read
+  this SKILL.md first; it is an index, not the answer — for any concrete
+  signature, option list, or version-specific behavior, open the relevant
+  references/ file and verify against docs.sepasoft.com before answering.
+  Based on current stable release with known forward changes flagged inline.
 ---
 
 # SepaSoft Foundations

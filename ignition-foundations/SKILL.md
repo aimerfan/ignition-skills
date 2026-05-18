@@ -4,13 +4,11 @@ description: >-
   Conceptual grounding for Ignition 8.1 (SCADA platform by Inductive
   Automation): system.* scripting API surface, execution scopes, Jython 2.7
   behavior, and Perspective. This is a foundation skill — load it whenever a
-  task or question touches Ignition scripting, system.* calls, execution
-  scope (Gateway/Designer/Vision/Perspective), Jython 2.7 / Java interop,
-  tags or UDTs, Perspective views/bindings/props, expressions, named queries,
-  messaging/events, alarms, or any Ignition platform behavior. If the topic
-  is plausibly Ignition, load this rather than answering from memory — the
-  cost of loading is low and guessing an API signature or scope here is
-  high-risk. Read this SKILL.md first; it is an index, not the answer — for
+  task plausibly touches Ignition: scripting, system.* calls, execution
+  scope, Jython 2.7 / Java interop, tags or UDTs, Perspective
+  bindings/props, expressions, named queries, messaging, or alarms. Loading
+  is cheap and guessing an API signature or scope here is high-risk, so load
+  it eagerly. Read this SKILL.md first; it is an index, not the answer — for
   any concrete signature, option list, or version-specific behavior, open the
   relevant references/ file and verify against docs.inductiveautomation.com
   before answering. Covers 8.1 with 8.1 to 8.3 version-sensitive notes
