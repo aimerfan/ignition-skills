@@ -118,6 +118,22 @@ Source: https://docs.sepasoft.com/articles/user-manual/using-parameters-in-batch
   COMMAND_START via executeEntryCommand.
 - "Enterprise can drive a site child batch's state" -> forbidden; use
   removeEntry to reset.
+- "Executed is a batch state" -> it is not. The official Command-State
+  enumeration has exactly 13 states (1=Idle through 13=Aborted); "Executed"
+  is not among them. "Executed" is a batch queue lifecycle marker (a batch
+  that has run and been removed from the Active queue), not a state-machine
+  state. Source:
+  https://docs.sepasoft.com/articles/user-manual/batch-command-state-sequence
+
+Unverified observations (not located verbatim in the official docs; do not
+state as fact — verify in the EBR Viewer / Batch Monitor or docs before
+relying on these):
+- "Idle is written to EBR Parameters like other states" — reportedly the
+  initial Idle state is not recorded as an EBR parameter entry. Not confirmed
+  in docs.
+- "Resetting -> Executed is the fixed terminal path for all outcome types"
+  — reportedly every terminal outcome converges through Resetting before the
+  batch leaves the Active queue. Not confirmed verbatim in docs.
 
 ## Version sensitivity
 

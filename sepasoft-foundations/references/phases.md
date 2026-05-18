@@ -57,6 +57,13 @@ cannot delete a phase that is used in recipes or batches" (delete shows the
 remaining references). Contrast this with renaming a Production equipment
 item, which orphans data (see `references/equipment-model.md`).
 
+Identity vs behavior are two different propagation rules — do not conflate
+them. Renaming (identity) auto-updates all references as above. Editing a
+phase's parameters/logic (behavior) does NOT follow the same rule: that path
+is version-gated (prior to 3.81.11 RC2 phase changes are not auto-reflected
+in recipes; from 3.81.11 RC2 / SP9 you choose where updates apply). See
+`references/verification-tools.md` for the sourced version detail.
+
 Source: https://docs.sepasoft.com/articles/user-manual/batch-procedure-phases
 
 ## Base phase catalog (sourced summaries)

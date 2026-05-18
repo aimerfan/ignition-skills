@@ -45,6 +45,28 @@ module:Batch Procedure、OEE/Downtime、SPC、Track & Trace、Business Connector
   要把內部結構當穩定事實陳述
 - 未經官方文件或高可信來源驗證的內容,標為推測或待補,不寫成斷言
 
+## 版本敏感速查表
+
+SepaSoft 行為大量以 service pack 為界。下表彙整各 reference 已標註且有
+官方來源的切點,供快速判斷「此版本是否具備某行為」。陳述任一條時須帶版本,
+細節與來源 URL 見對應 reference。
+
+| 版本切點 | 行為 | 對應 reference |
+|---|---|---|
+| 3.81.5 SP5 / 3.81.6 RC2 | `getEntryLinks()` 可用 | ebr-data-model |
+| 3.81.6 RC1 | EBR Viewer component 可用 | ebr-data-model |
+| 3.81.8 | `getExecutedBatchIDs` 引入(maxResults 預設 100,0/負值仍 cap 100) | ebr-data-model |
+| 3.81.8 SP6 | EBR Viewer 預設取 last occurrence(BEGIN_DATE_TIME 例外取 first);`{first()}`/`{last()}` template syntax | ebr-data-model |
+| 3.81.10 SP7 | `addEntry` 的 `batchName` 變 optional | batch-lifecycle |
+| 3.81.11 RC1 | `addEntry` 接受 BatchMasterRecipe 或 BatchFormula link | batch-lifecycle |
+| 3.81.12 SP2 | `getParameterValue` 不再要求 running batch | ebr-data-model |
+| 3.81.12 SP4 / 4.83.1 SP4 | 放置 template 為 unlinked copy(編輯不雙向傳播) | batch-lifecycle |
+| 3.81.12 SP5 / 4.83.1 SP5 | 可 sync 的 linked template(唯讀部署,編輯 instance 永久斷鏈) | batch-lifecycle |
+
+MES 3.0 vs 4.0(Ignition 8.1 vs 8.3,2025-09-16 並行發布)為主要版本界線,
+見 `references/docs-decision.md`。表中未列的 SP-gated 行為以各 reference
+末尾 Version sensitivity 段為準;此表只彙整,不取代 reference 的來源標註。
+
 ## Reference 索引
 
 用任務反查子文件:

@@ -51,6 +51,32 @@ paged/limited; pass explicit page/size rather than expecting "all rows".
 (`getEntryLinks()` available 3.81.5 SP5 / 3.81.6 RC2 and later.)
 Source: https://docs.sepasoft.com/articles/user-manual/electronic-batch-record
 
+## Active queue vs Executed: two mutually-exclusive buckets
+
+A batch is either on the Active queue (queued or running) or in the Executed
+set (finished and removed from the Active queue) — not both. The listing API
+differs per bucket:
+
+- Active queue: `getEntries(...)` / `getEntryLinks(...)` / `getEntry(batchID)`
+  — paged queue entries; the batch is still on the queue.
+- Executed: `system.mes.batch.queue.getExecutedBatchIDs(searchString,
+  equipmentFilter, beginDateTime, endDateTime, maxResults)` — "Returns a list
+  of batch ID strings for batches whose control recipes are in the executed
+  state (finished and no longer on the active queue)." Introduced 3.81.8;
+  all arguments optional. "active or queued batches are not listed here (use
+  getEntries / getEntry for the queue)."
+
+`getExecutedBatchIDs` silent-cap trap (this is the documented behavior, not a
+guess): `maxResults` defaults to 100, and "If zero or negative, the
+implementation still applies an effective cap of 100." Passing 0 / negative
+to mean "no limit" does NOT return everything — it silently caps at 100.
+Pass an explicit large `maxResults` if more rows are needed. Returns an empty
+list if no rows match or the dataset is unavailable (no exception for
+empty/missing data); results are ordered by batch ID and read from the
+analysis database context on the gateway.
+
+Source: https://docs.sepasoft.com/articles/user-manual/getexecutedbatchids/
+
 ## Internal storage: tag collectors + vertical tables
 
 - Tag collectors "record values when the equipment item is active in the
@@ -96,12 +122,33 @@ gateway."
 
 Source: https://docs.sepasoft.com/articles/user-manual/system-mes-batch-queue-getparametervalue-batchqueueentry-path
 
-待補 / unverified: the specific extraction rule sometimes stated as "default
-to the last entry, but begin-type entries use the first" was not located
-verbatim in the official docs during this build. The documented resolution is
-the live-vs-persisted rule above. Treat any first-vs-last-entry claim as
-unverified; confirm against the docs or with the EBR Viewer before relying on
-it.
+## EBR Viewer occurrence rule (distinct from the getParameterValue rule above)
+
+The first-vs-last-entry rule applies specifically to how the **EBR Viewer
+component / its template string** resolves a parameter that has multiple
+time-stamped occurrences. It is not the `getParameterValue` resolution rule
+(that one is the live-vs-persisted rule above; these are two different
+things).
+
+- "All parameters except BEGIN_DATE_TIME use the last occurrence of the
+  parameter" — i.e. the EBR Viewer defaults to the last occurrence, with
+  BEGIN_DATE_TIME as the documented exception (first occurrence).
+- The EBR Viewer template string can use `{first(PARAM_NAME)}` or
+  `{last(PARAM_NAME)}` to override which occurrence is shown in the detail
+  section.
+- Version: this behavior and the `{first()}`/`{last()}` template syntax are
+  3.81.8 SP6 (the SP6 note also describes a prior-version bug where
+  referenced parameters showed as "null" or the wrong occurrence). Do not
+  assume this occurrence rule for EBR access paths other than the EBR Viewer,
+  and do not assume it before 3.81.8 SP6.
+
+Source: https://docs.sepasoft.com/articles/release-notes-publication/3-81-8-release-notes/
+
+待補 / unverified: the "8 main parameters" list and the "three write
+mechanisms (snapshot / event-stream / single-write)" sometimes cited for EBR
+parameters were not located verbatim in the official docs (neither the
+user-manual EBR pages nor the 3.81.8 Release Notes). Treat those as
+unverified; confirm against the docs before relying on them.
 
 ## Common misconceptions (state -> correction)
 
@@ -110,13 +157,22 @@ it.
 - "I'll just SQL the EBR tables" -> use the EBR Viewer or
   `system.mes.batch.*` scripting; internal tables are not a public contract.
 - "getEntryLinks returns every batch" -> it is paged; pass page/size.
+- "getExecutedBatchIDs(maxResults=0) means no limit" -> 0 or negative still
+  caps at 100; pass an explicit large maxResults.
+- "getExecutedBatchIDs lists running/queued batches too" -> only executed
+  (removed-from-queue) batches; use getEntries/getEntry for the active queue.
 - "getParameterValue always reads live PLC state" -> only when controller
   active and entry loaded; otherwise persisted control logic.
+- "The EBR Viewer first/last rule is the same as the getParameterValue
+  rule" -> they are unrelated; EBR Viewer defaults to last occurrence
+  (BEGIN_DATE_TIME excepted, 3.81.8 SP6), getParameterValue uses
+  live-vs-persisted.
 
 ## Version sensitivity
 
 EBR Viewer (3.81.6 RC1+), getEntryLinks (3.81.5 SP5 / 3.81.6 RC2+),
-getParameterValue idle-read behavior (3.81.12 SP2+) are version-gated.
-Confirm the running module version before relying on these; see
-`references/docs-decision.md` for Release Notes use and
+getExecutedBatchIDs (3.81.8+), getParameterValue idle-read behavior
+(3.81.12 SP2+), EBR Viewer last-occurrence rule + `{first()}`/`{last()}`
+template syntax (3.81.8 SP6+) are version-gated. Confirm the running module version before relying on
+these; see `references/docs-decision.md` for Release Notes use and
 `references/path-syntax.md` for the parameter path notation used here.
