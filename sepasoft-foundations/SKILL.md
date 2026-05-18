@@ -4,12 +4,18 @@ description: >-
   Conceptual grounding for the SepaSoft Batch Procedure module on Ignition
   (MES, ISA-88 batch): ISA-88 four-layer model, system.mes.* API surface, EBR
   data model, batch lifecycle/state machine, and SepaSoft parameter path
-  syntax. Use when a task involves SepaSoft batch recipes, phases, EBR data,
-  system.mes scripting, or any question about Batch Procedure behavior where
-  guessing structure or an API would be risky. Read this SKILL.md first, then
-  selectively open the referenced files under references/ for the topic at
-  hand. Based on current stable release with known forward changes flagged
-  inline.
+  syntax. This is a foundation skill — load it whenever a task or question
+  touches batch recipes, master/control recipes, phases, operations, unit
+  procedures, batch state or commands (idle/running/holding/aborting...),
+  EBR or batch history, parameter paths or the {} placeholder syntax,
+  system.mes scripting, ISA-88 hierarchy, or any SepaSoft/MES batch behavior.
+  If the topic is plausibly SepaSoft batch, load this rather than answering
+  from memory — the cost of loading is low and guessing structure or an API
+  here is high-risk. Read this SKILL.md first; it is an index, not the answer
+  — for any concrete signature, option list, or version-specific behavior,
+  open the relevant references/ file and verify against docs.sepasoft.com
+  before answering. Based on current stable release with known forward
+  changes flagged inline.
 ---
 
 # SepaSoft Foundations
@@ -35,7 +41,12 @@ module:Batch Procedure、OEE/Downtime、SPC、Track & Trace、Business Connector
 
 ## 紀律提醒
 
-- 不確定的 `system.mes.*` signature/行為,去 docs.sepasoft.com 查,不憑記憶
+- reference 子文件是索引與 mental model,不是最終答案。具體
+  `system.mes.*` signature、行為、option 列舉、SP 版本特定行為,一律以
+  docs.sepasoft.com 為終點 —— skill 內的概念總結不足以作為最終答覆來源。
+  不要因為「reference 已有簡短描述」就略過查 docs;那段描述的作用是讓你
+  知道該查什麼、去哪查,不是替代查證
+- 不憑記憶湊 signature 或 method 名
 - 版本敏感性極強:SepaSoft 行為大量以 service pack 為界(例 3.81.12 SP5、
   4.83.1 SP5、MES 3.0 vs 4.0)。陳述行為必帶版本,並參照
   www.sepasoft.com/downloads 的 Release Notes

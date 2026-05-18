@@ -5,7 +5,9 @@
 本檔是這個 repo 的設計憲法,維護階段的權威來源。**權威順序:本檔 + 各 SKILL.md 與 skill 現況 > 一切其他文件。** 規則之間衝突時以本檔為準;本檔與 skill 現況衝突時,以現況為事實、修正本檔。
 
 歷史出處:初版依 Notion「Ignition+Sepa Skill 實作 Spec」
-(https://www.notion.so/3628ebada94581ac824cf524bde24d4a)建置。該 spec 是建置指引,**維護階段不再是權威來源**,僅供查設計原意(rationale);它可能已被刪除或隨使用回饋過時,不要把它當 living spec,也不要因為它與現況不一致就改動現況。下文約束已從 spec 抽離為本 repo 的原生規則,不依賴 spec 存在。
+(https://www.notion.so/3628ebada94581ac824cf524bde24d4a)建置。該 spec 是建置指引,**維護階段不再是權威來源**,僅供查設計原意(rationale);它可能已被刪除或隨使用回饋過時。下文約束已從 spec 抽離為本 repo 的原生規則,不依賴 spec 存在。
+
+**現況刻意偏離 spec 是正常的維護結果,不是待修正的錯誤。** 維護期依使用回饋推翻建置期 spec 條目是被允許且預期的;凡現況與 spec 衝突,一律以現況為準,**不得以「spec 當初規定 X」為由把現況回退**。要再改現況,須有新的、更強的證據並重新與 user 確認 —— spec 不構成這種證據。
 
 ## 設計定位(最重要,易被誤改)
 
@@ -28,6 +30,10 @@
 ## 必須排除的內容
 
 特定 client / project / server / gateway / tag provider 名稱;客戶自製 framework(屬 project file 層,非 skill 層);特定 phase / recipe / batch / view 命名;SQL table / column 名(internal 細節);任何訓練資料中未經驗證的內容。
+
+## 已知的刻意偏離
+
+description 採 pushy 寫法(推翻 spec §10.2)、SKILL.md 紀律段把 reference 定位為索引非答案(具體 signature/option/版本行為一律以官方 docs 為終點)—— 兩項皆依 2026-05 回饋刻意為之,適用兩個 skill,屬上述「正常維護結果」,依據與全程記於 `reports/feedback-2026-05-18.md`。
 
 ## 跨環境與格式約束
 

@@ -3,12 +3,18 @@ name: ignition-foundations
 description: >-
   Conceptual grounding for Ignition 8.1 (SCADA platform by Inductive
   Automation): system.* scripting API surface, execution scopes, Jython 2.7
-  behavior, and Perspective. Use when a task involves Ignition scripting,
-  Gateway/Designer/Vision/Perspective scope reasoning, tag or binding work, or
-  any question about Ignition platform behavior where guessing an API signature
-  or scope would be risky. Read this SKILL.md first, then selectively open the
-  referenced files under references/ for the topic at hand. Covers 8.1 with
-  8.1 to 8.3 version-sensitive notes flagged inline.
+  behavior, and Perspective. This is a foundation skill — load it whenever a
+  task or question touches Ignition scripting, system.* calls, execution
+  scope (Gateway/Designer/Vision/Perspective), Jython 2.7 / Java interop,
+  tags or UDTs, Perspective views/bindings/props, expressions, named queries,
+  messaging/events, alarms, or any Ignition platform behavior. If the topic
+  is plausibly Ignition, load this rather than answering from memory — the
+  cost of loading is low and guessing an API signature or scope here is
+  high-risk. Read this SKILL.md first; it is an index, not the answer — for
+  any concrete signature, option list, or version-specific behavior, open the
+  relevant references/ file and verify against docs.inductiveautomation.com
+  before answering. Covers 8.1 with 8.1 to 8.3 version-sensitive notes
+  flagged inline.
 ---
 
 # Ignition Foundations
@@ -33,8 +39,12 @@ HMI、報表、MES(SepaSoft 等第三方 module 建構於其上)。它是一個 
 
 ## 紀律提醒
 
-- 不確定的 API signature、method 名、回傳結構,去 docs.inductiveautomation.com
-  查,不要憑記憶湊
+- reference 子文件是索引與 mental model,不是最終答案。具體 API
+  signature、method 名、回傳結構、option 列舉、版本特定行為,一律以
+  docs.inductiveautomation.com 為終點 —— skill 內的概念總結不足以作為
+  最終答覆來源。不要因為「reference 已有簡短描述」就略過查 docs;那段
+  描述的作用是讓你知道該查什麼、去哪查,不是替代查證
+- 不要憑記憶湊 signature 或 method 名
 - 版本敏感:本 skill 以 8.1 為主。8.1 → 8.3 之間有變動的 API/概念,子文件以
   「Version sensitivity」段標出;陳述版本特定行為時必須帶版本
 - 分辨平台標準行為與客戶自製 framework。客戶 project 內的封裝(自製 library、
