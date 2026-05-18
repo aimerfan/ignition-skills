@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.inductiveautomation.com)",
+      "WebFetch(domain:docs.sepasoft.com)",
+      "WebFetch(domain:help.sepasoft.com)",
+      "WebFetch(domain:forum.inductiveautomation.com)",
+      "WebFetch(domain:www.sepasoft.com)",
+      "WebFetch(domain:sepasoft.com)",
+      "WebFetch(domain:www.inductiveautomation.com)",
+      "WebFetch(domain:inductiveautomation.com)",
+      "WebSearch",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_close",
+      "mcp__playwright__browser_wait_for"
+    ]
+  }
+}
