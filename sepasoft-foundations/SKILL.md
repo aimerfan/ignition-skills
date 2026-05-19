@@ -62,6 +62,8 @@ SepaSoft 行為大量以 service pack 為界。下表彙整各 reference 已標�
 |---|---|---|
 | 3.81.5 SP5 / 3.81.6 RC2 | `getEntryLinks()` 可用 | ebr-data-model |
 | 3.81.6 RC1 | EBR Viewer component 可用 | ebr-data-model |
+| 3.81.6 | Enterprise Import/Export `Skip Equipment Relation Check` option | mes-scripts-and-config |
+| 3.81.6 SP5 | MES Object `Save` event(docs 警告 script 跑在 Save 有效能成本) | mes-scripts-and-config |
 | 3.81.8 | `getExecutedBatchIDs` 引入(maxResults 預設 100,0/負值仍 cap 100) | ebr-data-model |
 | 3.81.8 SP6 | EBR Viewer 預設取 last occurrence(BEGIN_DATE_TIME 例外取 first);`{first()}`/`{last()}` template syntax | ebr-data-model |
 | 3.81.10 SP7 | `addEntry` 的 `batchName` 變 optional | batch-lifecycle |
@@ -94,6 +96,10 @@ MES 3.0 vs 4.0(Ignition 8.1 vs 8.3,2025-09-16 並行發布)為主要版本界線
   Timer/Document phase、PLI vs Auto handshake → 讀 `references/phases.md`
 - 處理 AbstractMESObject / MESObjectLink / UUID 解析、Formula vs Recipe、
   排程 vs batch queue → 讀 `references/mes-object-model.md`
+- 處理 MES Scripts(MES Object Events)定位/讀取、誤把 MES Script 當
+  Ignition project resource、MES configuration 存哪層、gwbk vs project
+  export vs Enterprise Import/Export、changelog/changeset/`.changelog`
+  混淆 → 讀 `references/mes-scripts-and-config.md`
 - 不確定 batch/recipe/phase 結構要 user 用哪個 SepaSoft 工具驗證 → 讀
   `references/verification-tools.md`
 - 要去 docs.sepasoft.com 查、SPA 抓取注意事項、Release Notes → 讀
