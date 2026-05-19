@@ -49,6 +49,13 @@ HMI、報表、MES(SepaSoft 等第三方 module 建構於其上)。它是一個 
   命名慣例)不屬平台知識,不要當成 Ignition 內建來陳述
 - 未經官方文件或高可信來源驗證的內容,明確標示為推測,不寫成斷言
 - scope 是最常見誤判來源:回答 scripting 問題前先確定 code 跑在哪個 scope
+- plausibly 屬本 skill 範圍(定位 / 這是什麼 / 跑在哪個 scope / 去哪
+  查證)但 reference 無錨點、索引也帶不到的問題:不可回「找不到」或憑
+  記憶答而停。先去 docs.inductiveautomation.com 查證;查證後仍判斷
+  skill 缺概念錨點,主動向 user 標明「這可能是 skill coverage gap」,
+  簡述主題、缺口、最終哪個官方來源答出,供 user 回饋。但 user 要的是
+  本 skill 刻意排除的 how-to / signature / option / troubleshooting 時
+  不算 gap,指向官方 docs 即可,不誤報
 
 ## Reference 索引
 

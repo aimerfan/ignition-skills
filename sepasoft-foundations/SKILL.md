@@ -51,6 +51,13 @@ module:Batch Procedure、OEE/Downtime、SPC、Track & Trace、Business Connector
 - internal DB schema、vertical table 結構不是公開契約,不要建議 raw SQL,也不
   要把內部結構當穩定事實陳述
 - 未經官方文件或高可信來源驗證的內容,標為推測或待補,不寫成斷言
+- plausibly 屬本 skill 範圍(定位 / 這是什麼 / 屬哪一層 / 去哪查證)但
+  reference 無錨點、索引也帶不到的問題:不可回「找不到」或憑記憶答而
+  停。先去 docs.sepasoft.com 查證;查證後仍判斷 skill 缺概念錨點,主動
+  向 user 標明「這可能是 skill coverage gap」,簡述主題、缺口、最終哪個
+  官方來源答出,供 user 回饋。但 user 要的是本 skill 刻意排除的
+  how-to / signature / option / troubleshooting 時不算 gap,指向官方
+  docs 即可,不誤報
 
 ## 版本敏感速查表
 

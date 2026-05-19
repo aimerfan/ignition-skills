@@ -35,6 +35,8 @@
 
 description 採 pushy 寫法(推翻 spec §10.2)、SKILL.md 紀律段把 reference 定位為索引非答案(具體 signature/option/版本行為一律以官方 docs 為終點)—— 兩項皆依 2026-05 回饋刻意為之,適用兩個 skill,屬上述「正常維護結果」,依據與全程記於 `reports/feedback-2026-05-18.md`。
 
+SKILL.md 紀律段另含一條「skill gap 自偵測」(對稱寫入兩個 skill),目標為觸發 gap 的 working session 自偵測並回饋、非維護行為,刻意為之不得當 scope creep 回退;脈絡與依據見 `reports/feedback-2026-05-20.md`。
+
 ## 跨環境與格式約束
 
 兩個 skill 在 Claude Code 與 claude.ai chat 兩環境共用(user 手動同步部署),內容須完全通用:
